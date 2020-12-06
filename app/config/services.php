@@ -62,15 +62,26 @@ $di->set('modelsMetadata', function() use ($config) {
     return new MetaDataAdapter();
 });
 
-$di->set('session', function() use ($config) {
-    $session = new Redis([
-        'path'     => $config->sessions->pathhost,
-        'lifetime' => $config->sessions->lifetime,
-        'statsKey' => 'sessions',
-    ]);
-    $session->start();
-    return $session;
-});
+// $di->set('session', function() use ($config) {
+//     $session = new Redis([
+//         'path'     => $config->sessions->pathhost,
+//         'lifetime' => $config->sessions->lifetime,
+//         'statsKey' => 'sessions',
+//     ]);
+//     $session->start();
+//     return $session;
+// });
+
+$di->setShared(
+    'session',
+    function () {
+        $session = new \Phalcon\Session\Adapter\Files();
+
+        $session->start();
+
+        return $session;
+    }
+);
 
 $di->set('dispatcher', function() {
     $eventsManager = new Manager();

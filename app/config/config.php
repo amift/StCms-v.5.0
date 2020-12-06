@@ -6,8 +6,8 @@ return new \Phalcon\Config([
         'adapter'  => 'Mysql',
         'host'     => 'localhost',
         'username' => 'root',
-        'password' => '',
-        'dbname'   => 'stcms5',
+        'password' => 'root',
+        'dbname'   => 'db_phalcon_stcms5',
     ],
     // APPLICATION SETTINGS
     'application' => [
@@ -18,7 +18,7 @@ return new \Phalcon\Config([
         'viewsDir'       => __DIR__ . '/../../app/views/',
         'pluginsDir'     => __DIR__ . '/../../app/plugins/',
         'libraryDir'     => __DIR__ . '/../../app/libraries/',
-        'baseUri'        => '',
+        'baseUri'        => '/',
     ],
     // REDIS SESSIONS
     'sessions' => [
